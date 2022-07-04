@@ -49,6 +49,9 @@
 #include <stdio.h>
 #include <string.h>
 
+#ifdef __TRUSTINSOFT_ANALYZER__
+#include <tis_builtin.h>
+#endif
 #define BUF_LEN 16
 
 static void show(const char *label, const uint8_t *s, size_t slen)
@@ -247,6 +250,26 @@ static int verify_cmac_512_bit_msg(TCCmacState_t s)
 	return result;
 }
 
+#ifdef __TRUSTINSOFT_ANALYZER__
+static void generalize_cmac()
+{
+	uint8_t msg[64];
+	uint8_t key[BUF_LEN];
+	uint8_t Tag[BUF_LEN];
+
+	tis_make_unknown(msg, sizeof(msg));
+	tis_make_unknown(key, sizeof(key));
+
+	struct tc_cmac_struct state;
+	struct tc_aes_key_sched_struct sched;
+
+	(void) tc_cmac_setup(&state, key, &sched);
+	(void) tc_cmac_init(&state);
+	(void) tc_cmac_update(&state, msg, sizeof(msg));
+	(void) tc_cmac_final(Tag, &state);
+}
+#endif
+
 /*
  * Main task to test CMAC
  * effects:    returns 1 if all tests pass
@@ -303,6 +326,10 @@ int main(void)
 		TC_ERROR("CMAC test #5  (512 bit msg)failed.\n");
 		goto exitTest;
 	}
+
+#if defined __TRUSTINSOFT_ANALYZER__ && ! defined TIS_INTERPRETER
+	generalize_cmac();
+#endif
 
 	TC_PRINT("All CMAC tests succeeded!\n");
 

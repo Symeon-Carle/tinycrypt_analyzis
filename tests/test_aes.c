@@ -52,6 +52,10 @@
 #include <stdint.h>
 #include <stddef.h>
 
+#ifdef __TRUSTINSOFT_ANALYZER__
+#include <tis_builtin.h>
+#endif
+
 #define NUM_OF_NIST_KEYS 16
 #define NUM_OF_FIXED_KEYS 128
 
@@ -2036,6 +2040,30 @@ int test_4(void)
 	return result;
 }
 
+#ifdef __TRUSTINSOFT_ANALYZER__
+/*
+ * All NIST tests with abstract values for text and key.
+ */
+void test_5_abstract_text_and_key(void)
+{
+	int result = TC_PASS;
+	uint8_t key[NUM_OF_NIST_KEYS];
+	struct kat_table kat_tbl;
+	tis_make_unknown(key, sizeof(key));
+	tis_make_unknown(&kat_tbl, sizeof(struct kat_table));
+
+	struct tc_aes_key_sched_struct s;
+
+	(void)tc_aes128_set_encrypt_key(&s, key);
+
+	uint8_t ciphertext[NUM_OF_NIST_KEYS];
+	uint8_t decrypted[NUM_OF_NIST_KEYS];
+
+	tc_aes_encrypt(ciphertext, kat_tbl.in, &s);
+	tc_aes_decrypt(decrypted, ciphertext, &s);
+}
+#endif
+
 /*
  * Main task to test AES
  */
@@ -2045,6 +2073,9 @@ int main(void)
 
 	TC_START("Performing AES128 tests:");
 
+#if defined __TRUSTINSOFT_ANALYZER__ && ! defined TIS_INTERPRETER
+	test_5_abstract_text_and_key();
+#endif
 	result = test_1();
 	if (result == TC_FAIL) { /* terminate test */
 		TC_ERROR("AES128 test #1 (NIST key schedule test) failed.\n");
