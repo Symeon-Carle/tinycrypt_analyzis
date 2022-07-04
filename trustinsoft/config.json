@@ -87,6 +87,23 @@
         }
     },
     {
+        "name": "test_sha256",
+        "val": true,
+        "compilation_database": ".",
+        "prefix_path": "../",
+        "files": [
+            "tests/test_sha256.c",
+            "lib/source/sha256.c",
+            "lib/source/utils.c"
+         ],
+        "slevel-function": {
+            "tc_sha256_update": 1024,
+            "tc_sha256_final": 8,
+            "compress": 48,
+            "test_12": 8
+        }
+    },
+    {
         "name": "NO_CONFIG"
     }
 ]

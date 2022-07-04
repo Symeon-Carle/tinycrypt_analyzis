@@ -340,7 +340,11 @@ unsigned int test_12(void)
         (void)memset(m, 0x00, sizeof(m));
 
         (void)tc_sha256_init(&s);
+#ifdef __TRUSTINSOFT_ANALYZER__
+        for (i = 0; i < 4; ++i) {
+#else
         for (i = 0; i < 1000; ++i) {
+#endif
                 tc_sha256_update(&s, m, sizeof(m));
         }
         (void)tc_sha256_final(digest, &s);
@@ -368,7 +372,11 @@ unsigned int test_13(void)
         (void)memset(m, 0x5a, sizeof(m));
 
         (void)tc_sha256_init(&s);
+#ifdef __TRUSTINSOFT_ANALYZER__
+        for (i = 0; i < 4; ++i) {
+#else
         for (i = 0; i < 16384; ++i) {
+#endif
                 tc_sha256_update(&s, m, sizeof(m));
         }
         (void)tc_sha256_final(digest, &s);
@@ -396,7 +404,11 @@ unsigned int test_14(void)
         (void)memset(m, 0x00, sizeof(m));
 
         (void) tc_sha256_init(&s);
+#ifdef __TRUSTINSOFT_ANALYZER__
+        for (i = 0; i < 4; ++i) {
+#else
         for (i = 0; i < 33280; ++i) {
+#endif
                 tc_sha256_update(&s, m, sizeof(m));
         }
         (void) tc_sha256_final(digest, &s);
