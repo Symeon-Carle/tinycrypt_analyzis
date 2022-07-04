@@ -51,6 +51,10 @@
 
 #include <string.h>
 
+#ifdef __TRUSTINSOFT_ANALYZER__
+#include <tis_builtin.h>
+#endif
+
 #define TC_CCM_MAX_CT_SIZE 50
 #define TC_CCM_MAX_PT_SIZE 25
 #define NUM_NIST_KEYS 16
@@ -116,7 +120,11 @@ int do_test(const uint8_t *key, uint8_t *nonce,
 	if (result == 0) {
 		TC_ERROR("ccm_decrypt failed in %s.\n", __func__);
 		show_str("\t\tExpected", data, dlen);
+#ifdef __TRUSTINSOFT_BUGFIX__
+		show_str("\t\tComputed", decrypted, dlen);
+#else
 		show_str("\t\tComputed", decrypted, sizeof(decrypted));
+#endif
 
 		result = TC_FAIL;
 		goto exitTest1;
@@ -128,6 +136,38 @@ exitTest1:
 	TC_END_RESULT(result);
 	return result;
 }
+
+#ifdef __TRUSTINSOFT_ANALYZER__
+void test_generalized_len8(void)
+{
+	uint16_t mlen = M_LEN8;
+	uint8_t key[NUM_NIST_KEYS];
+	uint8_t nonce[NONCE_LEN];
+	uint8_t hdr[HEADER_LEN];
+	uint8_t data[DATA_BUF_LEN23];
+
+	tis_make_unknown(key, sizeof(key));
+	tis_make_unknown(nonce, sizeof(nonce));
+	tis_make_unknown(hdr, sizeof(hdr));
+	tis_make_unknown(data, sizeof(data));
+
+
+	uint8_t ciphertext[TC_CCM_MAX_CT_SIZE];
+	uint8_t decrypted[TC_CCM_MAX_PT_SIZE];
+	struct tc_ccm_mode_struct c;
+	struct tc_aes_key_sched_struct sched;
+
+	tc_aes128_set_encrypt_key(&sched, key);
+
+	tc_ccm_config(&c, &sched, nonce, sizeof(nonce), mlen);
+
+	tc_ccm_generation_encryption(ciphertext, TC_CCM_MAX_CT_SIZE, hdr,
+		sizeof(hdr), data, sizeof(data), &c);
+
+	tc_ccm_decryption_verification(decrypted, TC_CCM_MAX_PT_SIZE, hdr,
+		sizeof(hdr), ciphertext, sizeof(data)+mlen, &c);
+}
+#endif
 
 int test_vector_1(void)
 {
@@ -471,8 +511,18 @@ int test_vector_8(void)
 						sizeof(hdr), ciphertext, mlen, &c);
 	if (result == 0) {
 		TC_ERROR("ccm_decrypt failed in %s.\n", __func__);
+#ifdef __TRUSTINSOFT_BUGFIX__
+// replace sizeof(data) (the size of a pointer to char) by the size of the buffer
+		show_str("\t\tExpected", data, 0);
+#else
 		show_str("\t\tExpected", data, sizeof(data));
+#endif
+#ifdef __TRUSTINSOFT_BUGFIX__
+		show_str("\t\tComputed", decrypted, 0);
+#else
 		show_str("\t\tComputed", decrypted, sizeof(decrypted));
+#endif
+
 
 		result = TC_FAIL;
 		goto exitTest1;
@@ -491,6 +541,10 @@ exitTest1:
 int main(void)
 {
 	int result = TC_PASS;
+
+#if defined __TRUSTINSOFT_ANALYZER__ && ! defined TIS_INTERPRETER
+	test_generalized_len8();
+#endif
 
 	TC_START("Performing CCM tests:");
 

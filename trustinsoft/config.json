@@ -33,6 +33,27 @@
         }
     },
     {
+        "name": "test_ccm_mode",
+        "val": true,
+        "compilation_database": ".",
+        "prefix_path": "../",
+        "files": [
+            "tests/test_ccm_mode.c",
+            "lib/source/ccm_mode.c",
+            "lib/source/aes_encrypt.c",
+            "lib/source/utils.c"
+         ],
+        "slevel-function": {
+            "tc_aes128_set_encrypt_key": 44,
+            "tc_aes_encrypt": 10,
+            "tc_ccm_generation_encryption": 16,
+            "tc_ccm_decryption_verification": 14,
+            "ccm_cbc_mac": 25,
+            "ccm_ctr_mode": 25,
+            "show_str": 40
+        }
+    },
+    {
         "name": "NO_CONFIG"
     }
 ]
