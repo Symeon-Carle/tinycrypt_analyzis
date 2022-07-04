@@ -47,6 +47,34 @@
 #include <stdlib.h>
 #include <string.h>
 
+#ifdef __TRUSTINSOFT_ANALYZER__
+#include <tis_builtin.h>
+void test_generalized(void)
+{
+        uint8_t key[16];
+        uint8_t ctr[16];
+        uint8_t plaintext[64];
+
+	tis_make_unknown(key, sizeof(key));
+	tis_make_unknown(ctr, sizeof(ctr));
+	tis_make_unknown(plaintext, sizeof(plaintext));
+
+        struct tc_aes_key_sched_struct sched;
+        uint8_t out[80];
+        uint8_t decrypted[64];
+
+        (void)tc_aes128_set_encrypt_key(&sched, key);
+
+        (void)memcpy(out, ctr, sizeof(ctr));
+        tc_ctr_mode(&out[TC_AES_BLOCK_SIZE], sizeof(plaintext), plaintext,
+			sizeof(plaintext), ctr, &sched);
+
+        (void) memcpy(ctr, out, sizeof(ctr));
+        tc_ctr_mode(decrypted, sizeof(decrypted), &out[TC_AES_BLOCK_SIZE],
+                        sizeof(decrypted), ctr, &sched);
+}
+#endif
+
 /*
  * NIST SP 800-38a CTR Test for encryption and decryption.
  */
@@ -129,6 +157,10 @@ int main(void)
                 TC_ERROR("CBC test #1 failed.\n");
                 goto exitTest;
         }
+
+#if defined __TRUSTINSOFT_ANALYZER__ && ! defined TIS_INTERPRETER
+	test_generalized();
+#endif
 
         TC_PRINT("All CTR tests succeeded!\n");
 

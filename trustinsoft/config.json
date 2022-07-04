@@ -71,6 +71,22 @@
         }
     },
     {
+        "name": "test_ctr_mode",
+        "val": true,
+        "compilation_database": ".",
+        "prefix_path": "../",
+        "files": [
+            "tests/test_ctr_mode.c",
+            "lib/source/ctr_mode.c",
+            "lib/source/aes_encrypt.c",
+            "lib/source/utils.c"
+         ],
+        "slevel-function": {
+            "tc_aes128_set_encrypt_key": 44,
+            "tc_ctr_mode": 64
+        }
+    },
+    {
         "name": "NO_CONFIG"
     }
 ]

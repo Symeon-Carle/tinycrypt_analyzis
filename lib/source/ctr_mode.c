@@ -58,8 +58,16 @@ int tc_ctr_mode(uint8_t *out, unsigned int outlen, const uint8_t *in,
 	(void)_copy(nonce, sizeof(nonce), ctr, sizeof(nonce));
 
 	/* select the last 4 bytes of the nonce to be incremented */
+#ifdef __TRUSTINSOFT_BUGFIX__
+// fix integer promotion
+	block_num = ((unsigned)nonce[12] << 24)
+		| ((unsigned)nonce[13] << 16)
+		| ((unsigned)nonce[14] << 8)
+		| ((unsigned)nonce[15]);
+#else
 	block_num = (nonce[12] << 24) | (nonce[13] << 16) |
 		    (nonce[14] << 8) | (nonce[15]);
+#endif
 	for (i = 0; i < inlen; ++i) {
 		if ((i % (TC_AES_BLOCK_SIZE)) == 0) {
 			/* encrypt data using the current nonce */
