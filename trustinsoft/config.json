@@ -87,6 +87,23 @@
         }
     },
     {
+        "name": "test_hmac",
+        "val": true,
+        "compilation_database": ".",
+        "prefix_path": "../",
+        "files": [
+            "tests/test_hmac.c",
+            "lib/source/hmac.c",
+            "lib/source/sha256.c",
+            "lib/source/utils.c"
+         ],
+        "slevel-function": {
+            "tc_sha256_update": 200,
+            "tc_sha256_final": 8,
+            "compress": 32
+        }
+    },
+    {
         "name": "test_sha256",
         "val": true,
         "compilation_database": ".",
