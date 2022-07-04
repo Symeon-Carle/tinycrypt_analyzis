@@ -43,7 +43,8 @@ EOF
 
 export -f run_test_analysis
 
-parallel -j 6 run_test_analysis ::: $(seq 1 1)
+NB_TESTS=$(grep \"name\" config.json | grep -v NO_CONFIG | wc -l)
+parallel -j 6 run_test_analysis ::: $(seq 1 $NB_TESTS)
 
 
 ##############################################################################

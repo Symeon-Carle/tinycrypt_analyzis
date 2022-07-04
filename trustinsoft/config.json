@@ -1,6 +1,7 @@
 [
     {
         "name": "test_aes",
+        "val": true,
         "compilation_database": ".",
         "prefix_path": "../",
         "files": [
@@ -11,9 +12,25 @@
         ],
         "slevel-function": {
             "tc_aes128_set_encrypt_key": 44
-        },
+        }
+    },
+    {
+        "name": "test_cbc_mode",
         "val": true,
-        "val-stop-at-nth-alarm": 1
+        "compilation_database": ".",
+        "prefix_path": "../",
+        "files": [
+            "tests/test_cbc_mode.c",
+            "lib/source/cbc_mode.c",
+            "lib/source/aes_encrypt.c",
+            "lib/source/aes_decrypt.c",
+            "lib/source/utils.c"
+         ],
+        "slevel-function": {
+            "tc_aes128_set_encrypt_key": 44,
+            "tc_cbc_mode_encrypt": 64,
+            "tc_cbc_mode_decrypt": 64
+        }
     },
     {
         "name": "NO_CONFIG"

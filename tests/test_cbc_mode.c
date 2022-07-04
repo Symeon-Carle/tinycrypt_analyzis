@@ -45,6 +45,10 @@
 #include <stdio.h>
 #include <string.h>
 
+#ifdef __TRUSTINSOFT_ANALYZER__
+#include <tis_builtin.h>
+#endif
+
 /*
  * NIST test vectors from SP 800-38a:
  *
@@ -132,7 +136,12 @@ int test_1_and_2(void)
 	(void)tc_aes128_set_decrypt_key(&a, key);
 
 	p = &encrypted[TC_AES_BLOCK_SIZE];
+#ifdef __TRUSTINSOFT_BUGFIX__
+// fix out of bound read
+	length = ((unsigned int) sizeof(encrypted)) - TC_AES_BLOCK_SIZE ;
+#else
 	length = ((unsigned int) sizeof(encrypted));
+#endif
 
 	if (tc_cbc_mode_decrypt(decrypted, length, p, length, encrypted, &a) == 0) {
 		TC_ERROR("CBC test #2 (decryption SP 800-38a tests) failed in. "
@@ -149,6 +158,37 @@ exitTest1:
 	return result;
 }
 
+#ifdef __TRUSTINSOFT_ANALYZER__
+void test_1_2_generalized_inputs() {
+	struct tc_aes_key_sched_struct a;
+	uint8_t key[16];
+	uint8_t iv_buffer[16];
+	uint8_t plain_text[64];
+	uint8_t encrypted[80];
+	uint8_t decrypted[64];
+	uint8_t *p;
+	unsigned int length;
+
+	tis_make_unknown(key, 16);
+	tis_make_unknown(iv_buffer, TC_AES_BLOCK_SIZE);
+	tis_make_unknown(plain_text, 64);
+
+	(void)tc_aes128_set_encrypt_key(&a, key);
+
+	TC_PRINT("CBC test #1 (encryption SP 800-38a tests):\n");
+	tc_cbc_mode_encrypt(encrypted, sizeof(plain_text) + TC_AES_BLOCK_SIZE,
+				plain_text, sizeof(plain_text), iv_buffer, &a);
+
+	TC_PRINT("CBC test #2 (decryption SP 800-38a tests):\n");
+	(void)tc_aes128_set_decrypt_key(&a, key);
+
+	p = &encrypted[TC_AES_BLOCK_SIZE];
+	length = ((unsigned int) sizeof(encrypted)) - TC_AES_BLOCK_SIZE ;
+
+	tc_cbc_mode_decrypt(decrypted, length, p, length, encrypted, &a);
+}
+#endif
+
 /*
  * Main task to test AES
  */
@@ -160,12 +200,14 @@ int main(void)
 
 	TC_PRINT("Performing CBC tests:\n");
 	result = test_1_and_2();
+#if defined __TRUSTINSOFT_ANALYZER__ && ! defined TIS_INTERPRETER
+	test_1_2_generalized_inputs();
+#endif
 	if (result == TC_FAIL) {
 		/* terminate test */
 		TC_ERROR("CBC test #1 failed.\n");
 		goto exitTest;
 	}
-
 	TC_PRINT("All CBC tests succeeded!\n");
 
 exitTest:
