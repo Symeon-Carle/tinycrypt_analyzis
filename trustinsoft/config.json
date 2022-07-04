@@ -54,6 +54,23 @@
         }
     },
     {
+        "name": "test_cmac_mode",
+        "val": true,
+        "compilation_database": ".",
+        "prefix_path": "../",
+        "files": [
+            "tests/test_cmac_mode.c",
+            "lib/source/cmac_mode.c",
+            "lib/source/aes_encrypt.c",
+            "lib/source/utils.c"
+         ],
+        "slevel-function": {
+            "tc_aes128_set_encrypt_key": 44,
+            "tc_cmac_update": 64,
+            "gf_double": 16
+        }
+    },
+    {
         "name": "NO_CONFIG"
     }
 ]

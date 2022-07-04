@@ -86,10 +86,19 @@ void gf_double(uint8_t *out, uint8_t *in)
 
 	out += (TC_AES_BLOCK_SIZE - 1);
 	for (;;) {
+#ifdef __TRUSTINSOFT_BUGFIX__
+// do not dereference out-1
+		*out = (*x << 1) ^ carry;
+		if (x == in) {
+			break;
+		}
+		--out;
+#else
 		*out-- = (*x << 1) ^ carry;
 		if (x == in) {
 			break;
 		}
+#endif
 		carry = *x-- >> 7;
 	}
 }
