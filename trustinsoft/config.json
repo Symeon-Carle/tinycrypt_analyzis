@@ -1,0 +1,21 @@
+[
+    {
+        "name": "test_aes",
+        "compilation_database": ".",
+        "prefix_path": "../",
+        "files": [
+            "tests/test_aes.c",
+            "lib/source/aes_encrypt.c",
+            "lib/source/aes_decrypt.c",
+            "lib/source/utils.c"
+        ],
+        "slevel-function": {
+            "tc_aes128_set_encrypt_key": 44
+        },
+        "val": true,
+        "val-stop-at-nth-alarm": 1
+    },
+    {
+        "name": "NO_CONFIG"
+    }
+]

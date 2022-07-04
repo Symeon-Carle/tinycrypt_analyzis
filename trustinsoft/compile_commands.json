@@ -1,0 +1,822 @@
+[
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-Os",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-D_ISOC99_SOURCE",
+            "-I../lib/include/",
+            "-I../lib/source/",
+            "-I../tests/include/",
+            "-DENABLE_TESTS",
+            "-o",
+            "test_ecc_dsa.o",
+            "test_ecc_dsa.c"
+        ],
+        "directory": "../tests",
+        "file": "test_ecc_dsa.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-Os",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-D_ISOC99_SOURCE",
+            "-I../lib/include/",
+            "-I../lib/source/",
+            "-I../tests/include/",
+            "-DENABLE_TESTS",
+            "-o",
+            "test_ccm_mode.o",
+            "test_ccm_mode.c"
+        ],
+        "directory": "../tests",
+        "file": "test_ccm_mode.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-Os",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-D_ISOC99_SOURCE",
+            "-I../lib/include/",
+            "-I../lib/source/",
+            "-I../tests/include/",
+            "-DENABLE_TESTS",
+            "-o",
+            "cbc_mode.o",
+            "../lib/source/cbc_mode.c"
+        ],
+        "directory": "../tests",
+        "file": "../lib/source/cbc_mode.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-Os",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-D_ISOC99_SOURCE",
+            "-I../lib/include/",
+            "-I../lib/source/",
+            "-I../tests/include/",
+            "-DENABLE_TESTS",
+            "-o",
+            "aes_encrypt.o",
+            "../lib/source/aes_encrypt.c"
+        ],
+        "directory": "../tests",
+        "file": "../lib/source/aes_encrypt.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-Os",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-D_ISOC99_SOURCE",
+            "-I../lib/include/",
+            "-I../lib/source/",
+            "-I../tests/include/",
+            "-DENABLE_TESTS",
+            "-o",
+            "cmac_mode.o",
+            "../lib/source/cmac_mode.c"
+        ],
+        "directory": "../tests",
+        "file": "../lib/source/cmac_mode.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-Os",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-D_ISOC99_SOURCE",
+            "-I../lib/include/",
+            "-I../lib/source/",
+            "-I../tests/include/",
+            "-DENABLE_TESTS",
+            "-o",
+            "ecc.o",
+            "source/ecc.c"
+        ],
+        "directory": "../lib",
+        "file": "source/ecc.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-Os",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-D_ISOC99_SOURCE",
+            "-I../lib/include/",
+            "-I../lib/source/",
+            "-I../tests/include/",
+            "-DENABLE_TESTS",
+            "-o",
+            "ctr_prng.o",
+            "../lib/source/ctr_prng.c"
+        ],
+        "directory": "../tests",
+        "file": "../lib/source/ctr_prng.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-Os",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-D_ISOC99_SOURCE",
+            "-I../lib/include/",
+            "-I../lib/source/",
+            "-I../tests/include/",
+            "-DENABLE_TESTS",
+            "-o",
+            "cbc_mode.o",
+            "source/cbc_mode.c"
+        ],
+        "directory": "../lib",
+        "file": "source/cbc_mode.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-Os",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-D_ISOC99_SOURCE",
+            "-I../lib/include/",
+            "-I../lib/source/",
+            "-I../tests/include/",
+            "-DENABLE_TESTS",
+            "-o",
+            "sha256.o",
+            "source/sha256.c"
+        ],
+        "directory": "../lib",
+        "file": "source/sha256.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-Os",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-D_ISOC99_SOURCE",
+            "-I../lib/include/",
+            "-I../lib/source/",
+            "-I../tests/include/",
+            "-DENABLE_TESTS",
+            "-o",
+            "test_ecc_utils.o",
+            "test_ecc_utils.c"
+        ],
+        "directory": "../tests",
+        "file": "test_ecc_utils.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-Os",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-D_ISOC99_SOURCE",
+            "-I../lib/include/",
+            "-I../lib/source/",
+            "-I../tests/include/",
+            "-DENABLE_TESTS",
+            "-o",
+            "ecc_dsa.o",
+            "source/ecc_dsa.c"
+        ],
+        "directory": "../lib",
+        "file": "source/ecc_dsa.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-Os",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-D_ISOC99_SOURCE",
+            "-I../lib/include/",
+            "-I../lib/source/",
+            "-I../tests/include/",
+            "-DENABLE_TESTS",
+            "-o",
+            "test_hmac_prng.o",
+            "test_hmac_prng.c"
+        ],
+        "directory": "../tests",
+        "file": "test_hmac_prng.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-Os",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-D_ISOC99_SOURCE",
+            "-I../lib/include/",
+            "-I../lib/source/",
+            "-I../tests/include/",
+            "-DENABLE_TESTS",
+            "-o",
+            "ecc_dsa.o",
+            "../lib/source/ecc_dsa.c"
+        ],
+        "directory": "../tests",
+        "file": "../lib/source/ecc_dsa.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-Os",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-D_ISOC99_SOURCE",
+            "-I../lib/include/",
+            "-I../lib/source/",
+            "-I../tests/include/",
+            "-DENABLE_TESTS",
+            "-o",
+            "sha256.o",
+            "../lib/source/sha256.c"
+        ],
+        "directory": "../tests",
+        "file": "../lib/source/sha256.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-Os",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-D_ISOC99_SOURCE",
+            "-I../lib/include/",
+            "-I../lib/source/",
+            "-I../tests/include/",
+            "-DENABLE_TESTS",
+            "-o",
+            "test_aes.o",
+            "test_aes.c"
+        ],
+        "directory": "../tests",
+        "file": "test_aes.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-Os",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-D_ISOC99_SOURCE",
+            "-I../lib/include/",
+            "-I../lib/source/",
+            "-I../tests/include/",
+            "-DENABLE_TESTS",
+            "-o",
+            "ecc_platform_specific.o",
+            "../lib/source/ecc_platform_specific.c"
+        ],
+        "directory": "../tests",
+        "file": "../lib/source/ecc_platform_specific.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-Os",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-D_ISOC99_SOURCE",
+            "-I../lib/include/",
+            "-I../lib/source/",
+            "-I../tests/include/",
+            "-DENABLE_TESTS",
+            "-o",
+            "cmac_mode.o",
+            "source/cmac_mode.c"
+        ],
+        "directory": "../lib",
+        "file": "source/cmac_mode.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-Os",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-D_ISOC99_SOURCE",
+            "-I../lib/include/",
+            "-I../lib/source/",
+            "-I../tests/include/",
+            "-DENABLE_TESTS",
+            "-o",
+            "hmac.o",
+            "source/hmac.c"
+        ],
+        "directory": "../lib",
+        "file": "source/hmac.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-Os",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-D_ISOC99_SOURCE",
+            "-I../lib/include/",
+            "-I../lib/source/",
+            "-I../tests/include/",
+            "-DENABLE_TESTS",
+            "-o",
+            "aes_decrypt.o",
+            "../lib/source/aes_decrypt.c"
+        ],
+        "directory": "../tests",
+        "file": "../lib/source/aes_decrypt.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-Os",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-D_ISOC99_SOURCE",
+            "-I../lib/include/",
+            "-I../lib/source/",
+            "-I../tests/include/",
+            "-DENABLE_TESTS",
+            "-o",
+            "hmac.o",
+            "../lib/source/hmac.c"
+        ],
+        "directory": "../tests",
+        "file": "../lib/source/hmac.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-Os",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-D_ISOC99_SOURCE",
+            "-I../lib/include/",
+            "-I../lib/source/",
+            "-I../tests/include/",
+            "-DENABLE_TESTS",
+            "-o",
+            "hmac_prng.o",
+            "../lib/source/hmac_prng.c"
+        ],
+        "directory": "../tests",
+        "file": "../lib/source/hmac_prng.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-Os",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-D_ISOC99_SOURCE",
+            "-I../lib/include/",
+            "-I../lib/source/",
+            "-I../tests/include/",
+            "-DENABLE_TESTS",
+            "-o",
+            "aes_encrypt.o",
+            "source/aes_encrypt.c"
+        ],
+        "directory": "../lib",
+        "file": "source/aes_encrypt.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-Os",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-D_ISOC99_SOURCE",
+            "-I../lib/include/",
+            "-I../lib/source/",
+            "-I../tests/include/",
+            "-DENABLE_TESTS",
+            "-o",
+            "hmac_prng.o",
+            "source/hmac_prng.c"
+        ],
+        "directory": "../lib",
+        "file": "source/hmac_prng.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-Os",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-D_ISOC99_SOURCE",
+            "-I../lib/include/",
+            "-I../lib/source/",
+            "-I../tests/include/",
+            "-DENABLE_TESTS",
+            "-o",
+            "utils.o",
+            "../lib/source/utils.c"
+        ],
+        "directory": "../tests",
+        "file": "../lib/source/utils.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-Os",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-D_ISOC99_SOURCE",
+            "-I../lib/include/",
+            "-I../lib/source/",
+            "-I../tests/include/",
+            "-DENABLE_TESTS",
+            "-o",
+            "aes_decrypt.o",
+            "source/aes_decrypt.c"
+        ],
+        "directory": "../lib",
+        "file": "source/aes_decrypt.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-Os",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-D_ISOC99_SOURCE",
+            "-I../lib/include/",
+            "-I../lib/source/",
+            "-I../tests/include/",
+            "-DENABLE_TESTS",
+            "-o",
+            "ecc_dh.o",
+            "../lib/source/ecc_dh.c"
+        ],
+        "directory": "../tests",
+        "file": "../lib/source/ecc_dh.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-Os",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-D_ISOC99_SOURCE",
+            "-I../lib/include/",
+            "-I../lib/source/",
+            "-I../tests/include/",
+            "-DENABLE_TESTS",
+            "-o",
+            "ctr_mode.o",
+            "source/ctr_mode.c"
+        ],
+        "directory": "../lib",
+        "file": "source/ctr_mode.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-Os",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-D_ISOC99_SOURCE",
+            "-I../lib/include/",
+            "-I../lib/source/",
+            "-I../tests/include/",
+            "-DENABLE_TESTS",
+            "-o",
+            "ccm_mode.o",
+            "source/ccm_mode.c"
+        ],
+        "directory": "../lib",
+        "file": "source/ccm_mode.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-Os",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-D_ISOC99_SOURCE",
+            "-I../lib/include/",
+            "-I../lib/source/",
+            "-I../tests/include/",
+            "-DENABLE_TESTS",
+            "-o",
+            "test_ctr_prng.o",
+            "test_ctr_prng.c"
+        ],
+        "directory": "../tests",
+        "file": "test_ctr_prng.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-Os",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-D_ISOC99_SOURCE",
+            "-I../lib/include/",
+            "-I../lib/source/",
+            "-I../tests/include/",
+            "-DENABLE_TESTS",
+            "-o",
+            "ccm_mode.o",
+            "../lib/source/ccm_mode.c"
+        ],
+        "directory": "../tests",
+        "file": "../lib/source/ccm_mode.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-Os",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-D_ISOC99_SOURCE",
+            "-I../lib/include/",
+            "-I../lib/source/",
+            "-I../tests/include/",
+            "-DENABLE_TESTS",
+            "-o",
+            "test_sha256.o",
+            "test_sha256.c"
+        ],
+        "directory": "../tests",
+        "file": "test_sha256.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-Os",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-D_ISOC99_SOURCE",
+            "-I../lib/include/",
+            "-I../lib/source/",
+            "-I../tests/include/",
+            "-DENABLE_TESTS",
+            "-o",
+            "ecc_dh.o",
+            "source/ecc_dh.c"
+        ],
+        "directory": "../lib",
+        "file": "source/ecc_dh.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-Os",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-D_ISOC99_SOURCE",
+            "-I../lib/include/",
+            "-I../lib/source/",
+            "-I../tests/include/",
+            "-DENABLE_TESTS",
+            "-o",
+            "ctr_mode.o",
+            "../lib/source/ctr_mode.c"
+        ],
+        "directory": "../tests",
+        "file": "../lib/source/ctr_mode.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-Os",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-D_ISOC99_SOURCE",
+            "-I../lib/include/",
+            "-I../lib/source/",
+            "-I../tests/include/",
+            "-DENABLE_TESTS",
+            "-o",
+            "test_ecc_dh.o",
+            "test_ecc_dh.c"
+        ],
+        "directory": "../tests",
+        "file": "test_ecc_dh.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-Os",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-D_ISOC99_SOURCE",
+            "-I../lib/include/",
+            "-I../lib/source/",
+            "-I../tests/include/",
+            "-DENABLE_TESTS",
+            "-o",
+            "test_ctr_mode.o",
+            "test_ctr_mode.c"
+        ],
+        "directory": "../tests",
+        "file": "test_ctr_mode.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-Os",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-D_ISOC99_SOURCE",
+            "-I../lib/include/",
+            "-I../lib/source/",
+            "-I../tests/include/",
+            "-DENABLE_TESTS",
+            "-o",
+            "test_cmac_mode.o",
+            "test_cmac_mode.c"
+        ],
+        "directory": "../tests",
+        "file": "test_cmac_mode.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-Os",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-D_ISOC99_SOURCE",
+            "-I../lib/include/",
+            "-I../lib/source/",
+            "-I../tests/include/",
+            "-DENABLE_TESTS",
+            "-o",
+            "ctr_prng.o",
+            "source/ctr_prng.c"
+        ],
+        "directory": "../lib",
+        "file": "source/ctr_prng.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-Os",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-D_ISOC99_SOURCE",
+            "-I../lib/include/",
+            "-I../lib/source/",
+            "-I../tests/include/",
+            "-DENABLE_TESTS",
+            "-o",
+            "ecc.o",
+            "../lib/source/ecc.c"
+        ],
+        "directory": "../tests",
+        "file": "../lib/source/ecc.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-Os",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-D_ISOC99_SOURCE",
+            "-I../lib/include/",
+            "-I../lib/source/",
+            "-I../tests/include/",
+            "-DENABLE_TESTS",
+            "-o",
+            "test_hmac.o",
+            "test_hmac.c"
+        ],
+        "directory": "../tests",
+        "file": "test_hmac.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-Os",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-D_ISOC99_SOURCE",
+            "-I../lib/include/",
+            "-I../lib/source/",
+            "-I../tests/include/",
+            "-DENABLE_TESTS",
+            "-o",
+            "utils.o",
+            "source/utils.c"
+        ],
+        "directory": "../lib",
+        "file": "source/utils.c"
+    },
+    {
+        "arguments": [
+            "gcc",
+            "-c",
+            "-Os",
+            "-std=c99",
+            "-Wall",
+            "-Wextra",
+            "-D_ISOC99_SOURCE",
+            "-I../lib/include/",
+            "-I../lib/source/",
+            "-I../tests/include/",
+            "-DENABLE_TESTS",
+            "-o",
+            "test_cbc_mode.o",
+            "test_cbc_mode.c"
+        ],
+        "directory": "../tests",
+        "file": "test_cbc_mode.c"
+    }
+]
