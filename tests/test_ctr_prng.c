@@ -36,6 +36,9 @@
 #include <tinycrypt/constants.h>
 #include <test_utils.h>
 
+#ifdef __TRUSTINSOFT_ANALYZER__
+#include <tis_builtin.h>
+#endif
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -62,6 +65,12 @@ uint8_t *hexStringToBytes(char *inhex)
 	
 	len = strlen(inhex) / 2;
 	retval = (uint8_t *)malloc(len+1);
+#ifdef __TRUSTINSOFT_BUGFIX__
+	if (retval == NULL) {
+	  perror("malloc failed!");
+	  exit(1);
+	}
+#endif
 	for(i=0, p = (uint8_t *) inhex; i<len; i++) {
 		retval[i] = (nibbleFromChar(*p) << 4) | nibbleFromChar(*(p+1));
 		p += 2;
@@ -268,6 +277,12 @@ static unsigned int executePRNG_TestVector(PRNG_Vector vector, unsigned int idx)
 	unsigned int  additionallen2    = 0U;
 
 	uint8_t * output = (uint8_t *)malloc(expectedlen);
+#ifdef __TRUSTINSOFT_BUGFIX__
+	if (output == NULL) {
+	  perror("malloc failed!");
+	  exit(1);
+	}
+#endif
 
 	unsigned int i;
 	TCCtrPrng_t ctx;
@@ -537,12 +552,40 @@ int main(void)
 	int result = TC_PASS;
 	unsigned int i;
 	TC_START("Performing CTR-PRNG tests:");
+
+#if defined __TRUSTINSOFT_ANALYZER__ && ! defined TIS_INTERPRETER
+// execute test once with generalized inputs
+	TCCtrPrng_t ctx;
+
+	const unsigned int entropylen = 32;
+	const unsigned int plen = 32;
+	const unsigned int additionallen1 = 32;
+	const unsigned int additionallen2 = 32;
+	const unsigned int expectedlen = 64;
+
+	uint8_t entropy [entropylen];
+	uint8_t personalization [plen];
+	uint8_t additional_input1 [additionallen1];
+	uint8_t additional_input2 [additionallen2];
+	uint8_t output [expectedlen];
+
+	tis_make_unknown(entropy, sizeof(entropy));
+	tis_make_unknown(personalization, sizeof(personalization));
+	tis_make_unknown(additional_input1, sizeof(additional_input1));
+	tis_make_unknown(additional_input2, sizeof(additional_input2));
+
+	(void)tc_ctr_prng_init(&ctx, entropy, entropylen, personalization, plen);
+
+	(void)tc_ctr_prng_generate(&ctx, additional_input1, additionallen1, output, expectedlen);
+	(void)tc_ctr_prng_generate(&ctx, additional_input2, additionallen2, output, expectedlen);
+#else
 	for (i = 0U; i < sizeof vectors / sizeof vectors[0]; i++) {
 		result = executePRNG_TestVector(vectors[i], i);
 		if (TC_PASS != result) {
 			goto exitTest;
 		}
 	}
+#endif
 
 	if (TC_PASS != test_reseed()) {
 		goto exitTest;

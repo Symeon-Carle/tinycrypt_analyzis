@@ -87,6 +87,25 @@
         }
     },
     {
+        "name": "test_ctr_prng",
+        "val": true,
+        "compilation_database": ".",
+        "prefix_path": "../",
+        "files": [
+            "tests/test_ctr_prng.c",
+            "lib/source/ctr_prng.c",
+            "lib/source/aes_encrypt.c",
+            "lib/source/utils.c"
+         ],
+        "slevel-function": {
+            "executePRNG_TestVector": 65,
+            "tc_aes128_set_encrypt_key": 44,
+            "tc_ctr_prng_update": 32,
+            "tc_ctr_prng_generate": 5,
+            "hexStringToBytes": 64
+        }
+    },
+    {
         "name": "test_hmac",
         "val": true,
         "compilation_database": ".",
