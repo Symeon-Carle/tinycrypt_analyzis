@@ -59,7 +59,7 @@ int tc_hmac_set_key(TCHmacState_t ctx, const uint8_t *key,
 		return TC_CRYPTO_FAIL;
 	}
 
-#ifdef __TRUSTINSOFT_BUGFIX__
+#ifdef __TRUSTINSOFT_BUGFIXNO__ 
 // fix uninitialized buffer
 	const uint8_t dummy_key[TC_SHA256_BLOCK_SIZE] = {0};
 #else

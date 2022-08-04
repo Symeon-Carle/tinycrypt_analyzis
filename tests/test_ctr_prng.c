@@ -65,7 +65,7 @@ uint8_t *hexStringToBytes(char *inhex)
 	
 	len = strlen(inhex) / 2;
 	retval = (uint8_t *)malloc(len+1);
-#ifdef __TRUSTINSOFT_BUGFIX__
+#ifdef __TRUSTINSOFT_BUGFIXNO__ 
 	if (retval == NULL) {
 	  perror("malloc failed!");
 	  exit(1);
@@ -277,7 +277,7 @@ static unsigned int executePRNG_TestVector(PRNG_Vector vector, unsigned int idx)
 	unsigned int  additionallen2    = 0U;
 
 	uint8_t * output = (uint8_t *)malloc(expectedlen);
-#ifdef __TRUSTINSOFT_BUGFIX__
+#ifdef __TRUSTINSOFT_BUGFIXNO__ 
 	if (output == NULL) {
 	  perror("malloc failed!");
 	  exit(1);

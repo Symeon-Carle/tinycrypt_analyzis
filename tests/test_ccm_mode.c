@@ -120,7 +120,7 @@ int do_test(const uint8_t *key, uint8_t *nonce,
 	if (result == 0) {
 		TC_ERROR("ccm_decrypt failed in %s.\n", __func__);
 		show_str("\t\tExpected", data, dlen);
-#ifdef __TRUSTINSOFT_BUGFIX__
+#ifdef __TRUSTINSOFT_BUGFIXNO__ 
 		show_str("\t\tComputed", decrypted, dlen);
 #else
 		show_str("\t\tComputed", decrypted, sizeof(decrypted));
@@ -511,13 +511,13 @@ int test_vector_8(void)
 						sizeof(hdr), ciphertext, mlen, &c);
 	if (result == 0) {
 		TC_ERROR("ccm_decrypt failed in %s.\n", __func__);
-#ifdef __TRUSTINSOFT_BUGFIX__
+#ifdef __TRUSTINSOFT_BUGFIXNO__ 
 // replace sizeof(data) (the size of a pointer to char) by the size of the buffer
 		show_str("\t\tExpected", data, 0);
 #else
 		show_str("\t\tExpected", data, sizeof(data));
 #endif
-#ifdef __TRUSTINSOFT_BUGFIX__
+#ifdef __TRUSTINSOFT_BUGFIXNO__ 
 		show_str("\t\tComputed", decrypted, 0);
 #else
 		show_str("\t\tComputed", decrypted, sizeof(decrypted));
