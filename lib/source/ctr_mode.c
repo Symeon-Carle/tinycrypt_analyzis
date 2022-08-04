@@ -58,7 +58,7 @@ int tc_ctr_mode(uint8_t *out, unsigned int outlen, const uint8_t *in,
 	(void)_copy(nonce, sizeof(nonce), ctr, sizeof(nonce));
 
 	/* select the last 4 bytes of the nonce to be incremented */
-#ifdef __TRUSTINSOFT_BUGFIXNO__ 
+#ifdef __TRUSTINSOFT_BUGFIX__
 // fix integer promotion
 	block_num = ((unsigned)nonce[12] << 24)
 		| ((unsigned)nonce[13] << 16)

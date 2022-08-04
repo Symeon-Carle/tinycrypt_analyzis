@@ -136,7 +136,7 @@ int test_1_and_2(void)
 	(void)tc_aes128_set_decrypt_key(&a, key);
 
 	p = &encrypted[TC_AES_BLOCK_SIZE];
-#ifdef __TRUSTINSOFT_BUGFIXNO__ 
+#ifdef __TRUSTINSOFT_BUGFIX__
 // fix out of bound read
 	length = ((unsigned int) sizeof(encrypted)) - TC_AES_BLOCK_SIZE ;
 #else

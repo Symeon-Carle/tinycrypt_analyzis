@@ -64,7 +64,7 @@ static inline unsigned int rotword(unsigned int a)
 	return (((a) >> 24)|((a) << 8));
 }
 
-#ifdef __TRUSTINSOFT_BUGFIXNO__ 
+#ifdef __TRUSTINSOFT_BUGFIX__
 // fix integer promotion
 #define subbyte(a, o)((unsigned)sbox[((a) >> (o))&0xff] << (o))
 #else
@@ -88,7 +88,7 @@ int tc_aes128_set_encrypt_key(TCAesKeySched_t s, const uint8_t *k)
 	}
 
 	for (i = 0; i < Nk; ++i) {
-#ifdef __TRUSTINSOFT_BUGFIXNO__ 
+#ifdef __TRUSTINSOFT_BUGFIX__
 // fix integer promotion
 		s->words[i] = ((unsigned)k[Nb*i]<<24)
 			| ((unsigned)k[Nb*i+1]<<16)
